@@ -51,12 +51,15 @@ def make_text(chains):
         #
         # Note that for long texts (like a full book), this might mean
         # it would run for a very long time.
-
+        
         word = choice(chains[key])
         words.append(word)
+        #created variable for the text and stripped the beginning and end chars and took a slice of 140 char
+        words_join = " ".join(words).strip()[:139]
         key = (key[1], word)
 
-    return " ".join(words)
+    return words_join
+        
 
 
 def tweet(chains):
@@ -75,5 +78,6 @@ text = open_and_read_file(filenames)
 # Get a Markov chain
 chains = make_chains(text)
 
+make_text(chains)
 # Your task is to write a new function tweet, that will take chains as input
 # tweet(chains)
